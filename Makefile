@@ -8,15 +8,17 @@ prereqs prerequisites:
 
 tests: lint mypy bandit ftests
 
-make test-%:
-	. .venv/bin/activate && python -m $(subst test-,,$@) module_resources/
+lint:
+	python -m pylint module_resources/
 
-lint: test-pylint
-mypy: test-mypy
-bandit: test-bandit\ -r
+mypy:
+	python -m mypy module_resources/
+
+bandit:
+	python -m bandit -r .
 
 ftests functional_tests:
-	. .venv/bin/activate && python -m pytest -vv tests/functional/
+	python -m pytest -vv tests/functional/
 
 virtualenv:
 	virtualenv --python=python3.7 .venv
