@@ -30,7 +30,7 @@ class ImportableFallbackDict(dict):
 
 
 class ModuleResource:
-    filename_glob = None
+    filename_glob = ''
 
     def __init__(self, module_name, module_path, filename_glob=None):
         self.name = module_name
