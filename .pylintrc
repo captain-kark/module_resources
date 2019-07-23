@@ -1,0 +1,7 @@
+[MESSAGES CONTROL]
+disable=
+ C0111,  # missing docstring
+ I1101,  # run-time introspection of living objects
+ W1203,  # Use of % formatting in logging functions
+ R0903   # too few public methods in a class
+ignore=tests
