@@ -2,9 +2,6 @@ import json
 
 from .module_resources import ModuleResource
 
-MODULE_DESCRIPTION = "JSON file as a python namedtuple object"
-FILENAME_GLOB = '*.json'
-
 class NamedtupleDecoder(json.JSONDecoder):
     def __init__(self, *args, **kwargs):
         self.spec = kwargs.pop('spec')
@@ -15,8 +12,7 @@ class NamedtupleDecoder(json.JSONDecoder):
 
 
 class JsonModuleResource(ModuleResource):
-    def __init__(self, name, path, description=MODULE_DESCRIPTION, glob=FILENAME_GLOB):
-        super().__init__(name, path, description, glob)
+    filename_glob = '*.json'
 
     def create_module(self, spec):
         json_filepath = self.import_request_to_filepath(spec)

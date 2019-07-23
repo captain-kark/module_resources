@@ -30,18 +30,20 @@ class ImportableFallbackDict(dict):
 
 
 class ModuleResource:
-    def __init__(self, module_name, module_path, description, filename_glob):
+    filename_glob = None
+
+    def __init__(self, module_name, module_path, filename_glob=None):
         self.name = module_name
         self.path = module_path
-        self.description = description
-        self.filename_glob = filename_glob
+        if filename_glob:
+            self.filename_glob = filename_glob
 
     def import_request_to_filepath(self, spec):
         filename = spec.name.replace(f'{self.name}.', '')
         return Path(self.path).parent / f'{filename}{Path(self.filename_glob).suffix}'
 
     def intercept_imports(self):
-        loader = ModuleResourceLoader(self.create_module, self.description)
+        loader = ModuleResourceLoader(self.create_module)
         finder = ModuleResourceFinder(self.name, loader, self.filename_glob)
         all_modules = [Path(filename).stem for filename in glob.glob(str(self.filename_glob))]
         sys.meta_path.append(finder)
@@ -88,12 +90,11 @@ class ModuleResourceFinder(importlib.abc.MetaPathFinder):
 
 
 class ModuleResourceLoader(importlib.abc.Loader):
-    def __init__(self, create_module, description):
+    def __init__(self, create_module):
         self.create_module = create_module
-        self.description = description
 
-    def exec_module(self, module):
+    def exec_module(self, _):
         pass
 
     def module_repr(self, _):
-        return self.description or f'A resource file loaded by {__name__}'
+        pass
