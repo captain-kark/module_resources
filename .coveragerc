@@ -7,7 +7,7 @@ omit =
 
 [report]
 precision = 2
-fail_under = 10.00
+fail_under = 90.00
 # Regexes for lines to exclude from consideration.
 # See: https://coverage.readthedocs.io/en/coverage-4.5.2/excluding.html#advanced-exclusion
 exclude_lines =
