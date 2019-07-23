@@ -143,7 +143,7 @@ You can't export arbitrarily deep from a json or yaml file. Only one level deep 
 
 #### Type hints for module resources
 
-Using this tool is going to make mypy unhappy.
+Using this tool is going to make pylint unhappy.
 
 ```py
 from module_resources.examples.json import logging_config
@@ -152,7 +152,11 @@ import logging.config
 logging.config.dictConfig(dict(logger))
 ```
 
-The above code is going to raise complaints from your type checker. This tool leverages highly dynamic features of the python language to accomplish its work, and as such properties and types won't be available until runtime.
+```
+pylint: Unable to import 'module_resources.example.json.logging_config' ("import-error") [E0401]
+```
+
+The above code is going to raise complaints from your linter. This tool leverages highly dynamic features of the python language to accomplish its work, and as such properties and types won't be available until runtime. You will need to include exceptions for these objects in your codebase if you want to maintain a high lint score while using this tool.
 
 # Development
 
