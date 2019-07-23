@@ -22,4 +22,7 @@ virtualenv:
 	virtualenv --python=python3.7 .venv
 	. .venv/bin/activate && pip install -r requirements-dev.txt
 
+contributors:
+	git log --format='%ae' | uniq > CONTRIBUTORS.txt
+
 .PHONY: tests

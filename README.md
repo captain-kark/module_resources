@@ -211,11 +211,11 @@ Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of cond
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+This project uses [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-See the list of [contributors](./CONTRIBUTORS.md) who participated in this project.
+See the list of [contributors](./CONTRIBUTORS.txt) who participated in this project.
 
 This list can be updated with `make contributors`.
 
