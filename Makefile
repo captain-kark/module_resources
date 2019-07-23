@@ -20,6 +20,10 @@ bandit:
 ftests functional_tests:
 	python -m pytest -vv tests/functional/
 
+preview-deployment:
+	python setup.py egg_info --tag-build=-"$TRAVIS_PULL_REQUEST_SHA"
+	python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+
 virtualenv:
 	virtualenv --python=python3.7 .venv
 	. .venv/bin/activate && pip install -r requirements-dev.txt

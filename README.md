@@ -26,14 +26,12 @@ data_stuff.contents == 'A python namedtuple instance'
 
 ## Getting Started
 
-```diff
-- To use this in your own project, install with pip.
--
-- ```
-- pip install module_resources
-- # supports yaml files too
-- pip install module_resources[yaml]
-- ```
+To use this in your own project, install with pip.
+
+```
+pip install module-resources
+# supports yaml files too
+pip install module-resources[yaml]
 ```
 
 Create a module location in your project where your desired importable resource files will live. I will use [this project as an example](./module_resources/examples).
@@ -197,11 +195,15 @@ make bandit
 
 ## Deployment
 
-```diff
-- Open a pull request against the master branch. Travis-CI will publish a new version as a candidate release after all tests pass. The version is the same as the 7-character short sha of the commit found at the tip of the branch that was used to build the release.
--
-- To publish a new official version, tag a commit and push it up to the master branch. This sha is used to build the new version, specified by the contents of the tag name.
+Open a pull request against the master branch. Travis-CI will publish a new version as a candidate release after all tests pass. You can install a preview version of this project after it gets pushed up to test.pypi.org after a successful build on an open pull request.
+
 ```
+pip install -i https://test.pypi.org/simple/ module-resources==0.0.1-${SHORT_SHA}
+```
+
+The version gets set to `0.0.1-${SHORT_SHA}`, where the `SHORT_SHA` is the 7-character short sha of the commit found at the tip of the branch that was used to build the release.
+
+To publish a new official version, tag a commit and push it up to the master branch. This tag is used to build the new version, specified by the contents of the tag name. The tag name should be a valid semver version number. Pushing the same tag value twice will result in the package not being published. You will need to resort to a manual publish to over-ride an existing release version.
 
 ## Contributing
 
