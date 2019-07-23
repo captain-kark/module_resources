@@ -18,9 +18,6 @@ jobs:
     - stage: publish-preview
       name: publish to test.pypi.org
       script: make preview-deployment
-after_success:
-  - python setup.py egg_info --tag-build=-"$TRAVIS_PULL_REQUEST_SHA"
-  - twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 before_deploy:
   - python setup.py egg_info --tag-build=-${TRAVIS_TAG#*v}
 deploy:

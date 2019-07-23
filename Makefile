@@ -22,6 +22,7 @@ ftests functional_tests:
 
 preview-deployment:
 	python setup.py egg_info --tag-build=-"$TRAVIS_PULL_REQUEST_SHA"
+	python setup.py sdist
 	python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
 virtualenv:
