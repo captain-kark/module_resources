@@ -97,6 +97,9 @@ To turn this object into a dictionary, pass it to `dict()`.
 >>> import logging.config
 >>> logging.config.dictConfig(dict(yaml_logging_config))
 >>> logging.getLogger('test').info('testing')
+```
+
+```
 2019-07-23 11:43:57,296 - test - INFO - testing
 ```
 
