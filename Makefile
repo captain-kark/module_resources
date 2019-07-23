@@ -6,7 +6,7 @@ clean:
 prereqs prerequisites:
 	./scripts/setup_prerequisites.sh
 
-tests: lint ftests mypy bandit ftests
+tests: lint mypy bandit ftests
 
 make test-%:
 	. .venv/bin/activate && python -m $(subst test-,,$@) module_resources/
