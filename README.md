@@ -195,13 +195,25 @@ Open a pull request against the master branch. Travis-CI will publish a preview 
 pip install -i https://test.pypi.org/simple/ module-resources==0.0.${TRAVIS_BUILD_NUMBER}
 ```
 
-To publish a new official version, tag a commit and push it up to the master branch. This tag is used to build the new version, specified by the contents of the tag name. The tag name should be a valid semver version number. Pushing the same tag value twice will result in the package not being published. You will need to resort to a manual publish to over-ride an existing release version.
+Note that if you open a pull request from a fork, this step won't run.
+
+To publish a new official version, tag a commit and push it up to the master branch.
+
+```
+git checkout master
+git pull origin master
+# examples of preparing a new tag for release
+make tag-patch # also accepts: tag-minor, tag-major
+git push origin --tags
+```
+
+Note that you must create and push tags from the master branch only. Tags found in pull requests won't do anything.
 
 ## Contributing
 
 Small pull requests are fine to submit directly as pull requests. Larger changes should first be submitted as issues and mapped out before starting work on the proposal.
 
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on the code of conduct, and the process for submitting pull requests.
 
 ## Versioning
 
@@ -209,7 +221,7 @@ This project uses [SemVer](http://semver.org/) for versioning. For the versions 
 
 ## Authors
 
-See the list of [contributors](./CONTRIBUTORS.txt) who participated in this project.
+See the list of [contributors](./CONTRIBUTORS.txt) who have participated in this project.
 
 This list can be updated with `make contributors`.
 
