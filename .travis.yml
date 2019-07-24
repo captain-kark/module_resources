@@ -23,5 +23,5 @@ jobs:
         - provider: pypi
           user: captain-kark
           password: "$pypi_password"
-          branches:
-            only: /^v\d+\.\d+(\.\d+)?$/
+          on:
+            all_branches: true
