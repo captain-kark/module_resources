@@ -11,12 +11,14 @@ jobs:
     - stage: publish-preview
       name: publish to test.pypi.org
       script: make preview-deployment
-      if: tag IS blank
 before_deploy:
   - python setup.py sdist
+branches:
+  only: master
 deploy:
   - provider: pypi
     user: captain-kark
     password: "$pypi_password"
     on:
       tags: true
+      condition: pull_request IS false
