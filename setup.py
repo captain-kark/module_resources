@@ -1,10 +1,11 @@
+import os
 import pathlib
 from setuptools import setup
 
 # This call to setup() does all the work
 setup(
     name="module-resources",
-    version="0.0.1",
+    version=os.getenv('TRAVIS_TAG', f"0.0.{os.getenv('TRAVIS_BUILD_NUMBER')}"),
     description="Import non-python files in a project directory as python namedtuple objects.",
     long_description=(pathlib.Path(__file__).parent / "README.md").read_text(),
     long_description_content_type="text/markdown",
