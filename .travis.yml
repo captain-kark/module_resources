@@ -4,5 +4,19 @@ python:
   - "3.7"
 install:
   - pip install -r requirements-dev.txt
-script:
-  - make tests
+jobs:
+  include:
+    - stage: test
+      script: make tests
+    - stage: publish-preview
+      name: publish to test.pypi.org
+      script: make preview-deployment
+      if: tag IS blank
+before_deploy:
+  - python setup.py sdist
+deploy:
+  - provider: pypi
+    user: captain-kark
+    password: "$pypi_password"
+    on:
+      tags: true

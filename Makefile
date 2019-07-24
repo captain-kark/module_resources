@@ -20,6 +20,10 @@ bandit:
 ftests functional_tests:
 	python -m pytest -vv tests/functional/
 
+preview-deployment:
+	python setup.py sdist
+	python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/module-resources-0.0.$(TRAVIS_BUILD_NUMBER).tar.gz
+
 virtualenv:
 	virtualenv --python=python3.7 .venv
 	. .venv/bin/activate && pip install -r requirements-dev.txt
