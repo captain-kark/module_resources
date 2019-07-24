@@ -195,7 +195,16 @@ Open a pull request against the master branch. Travis-CI will publish a preview 
 pip install -i https://test.pypi.org/simple/ module-resources==0.0.${TRAVIS_BUILD_NUMBER}
 ```
 
-To publish a new official version, tag a commit and push it up to the master branch. This tag is used to build the new version, specified by the contents of the tag name. The tag name should be a valid semver version number. Pushing the same tag value twice will result in the package not being published. You will need to resort to a manual publish to over-ride an existing release version.
+To publish a new official version, tag a commit and push it up to the master branch.
+
+```
+# examples of preparing a new tag for release
+make tag-patch
+make tag-minor
+make tag-major
+```
+
+Note that you must create and push tags from the master branch only. Tags found in pull requests won't do anything.
 
 ## Contributing
 
