@@ -213,7 +213,7 @@ Note that you must create and push tags from the master branch only. Tags found 
 
 Small pull requests are fine to submit directly as pull requests. Larger changes should first be submitted as issues and mapped out before starting work on the proposal.
 
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on the code of conduct, and the process for submitting pull requests.
 
 ## Versioning
 
@@ -221,7 +221,7 @@ This project uses [SemVer](http://semver.org/) for versioning. For the versions 
 
 ## Authors
 
-See the list of [contributors](./CONTRIBUTORS.txt) who participated in this project.
+See the list of [contributors](./CONTRIBUTORS.txt) who have participated in this project.
 
 This list can be updated with `make contributors`.
 
