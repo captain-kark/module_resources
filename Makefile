@@ -21,8 +21,14 @@ ftests functional_tests:
 	python -m pytest -vv tests/functional/
 
 preview-deployment:
+	rm -r dist/
 	python setup.py sdist
-	python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/module-resources-0.0.$(TRAVIS_BUILD_NUMBER).tar.gz
+	python -m twine upload --repository-url https://test.pypi.org/legacy/ dist/* -p $(TWINE_TEST_PASSWORD)
+
+preview-deployment:
+	rm -r dist/
+	python setup.py sdist
+	python -m twine upload dist/*
 
 virtualenv:
 	virtualenv --python=python3.7 .venv

@@ -17,11 +17,6 @@ jobs:
       script: make preview-deployment
     - stage: publish
       if: type = push AND tag IS present
-      script: skip
-      install: skip
-      deploy:
-        - provider: pypi
-          user: captain-kark
-          password: "$pypi_password"
-          on:
-            all_branches: true
+      install:
+        - pip install -r requirements-publish.txt
+      script: make deployment
