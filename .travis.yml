@@ -23,3 +23,5 @@ jobs:
         - provider: pypi
           user: captain-kark
           password: "$pypi_password"
+          on:
+            all_branches: true
