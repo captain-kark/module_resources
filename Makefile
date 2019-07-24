@@ -31,4 +31,7 @@ virtualenv:
 contributors:
 	git log --format='%ae' | uniq > CONTRIBUTORS.txt
 
+tag-%:
+	git tag -a $(shell ./scripts/bump_tag.py $(subst tag-,,$@))
+
 .PHONY: tests
