@@ -195,6 +195,8 @@ Open a pull request against the master branch. Travis-CI will publish a preview 
 pip install -i https://test.pypi.org/simple/ module-resources==0.0.${TRAVIS_BUILD_NUMBER}
 ```
 
+Note that if you open a pull request from a fork, this step won't run.
+
 To publish a new official version, tag a commit and push it up to the master branch.
 
 ```
