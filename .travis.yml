@@ -6,12 +6,13 @@ install:
   - pip install -r requirements-dev.txt
 jobs:
   include:
-    if: pull_request IS true
     - stage: test
       script: make tests
+      if: pull_request IS true
     - stage: publish-preview
       name: publish to test.pypi.org
       script: make preview-deployment
+      if: pull_request IS true
 deploy:
   - provider: pypi
     user: captain-kark
