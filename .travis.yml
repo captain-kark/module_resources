@@ -8,11 +8,11 @@ jobs:
   include:
     - stage: test
       script: make tests
-      if: type IS pull_request
+      if: type = pull_request
     - stage: publish-preview
       name: publish to test.pypi.org
       script: make preview-deployment
-      if: type IS pull_request
+      if: type = pull_request
 branches:
   only: master
 deploy:
