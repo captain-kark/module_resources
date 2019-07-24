@@ -11,7 +11,7 @@ jobs:
       script: make tests
     - stage: publish-preview
       name: publish to test.pypi.org
-      if: type = pull_request
+      if: type = pull_request AND fork = false
       install:
         - pip install -r requirements-publish.txt
       script: make preview-deployment
