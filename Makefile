@@ -26,7 +26,7 @@ preview-deployment:
 
 virtualenv:
 	virtualenv --python=python3.7 .venv
-	. .venv/bin/activate && pip install -r requirements-dev.txt
+	. .venv/bin/activate && pip install -r requirements-dev.txt && pip install -r requirements-publish.txt
 
 contributors:
 	git log --format='%ae' | uniq > CONTRIBUTORS.txt
