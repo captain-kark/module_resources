@@ -7,14 +7,7 @@ install:
 jobs:
   include:
     - stage: test
-      script: make lint
-      name: pylint
-    - script: make mypy
-      name: mypy
-    - script: make bandit
-      name: bandit
-    - script: make ftests
-      name: pytest functional tests
+      script: make tests
     - stage: publish-preview
       name: publish to test.pypi.org
       script: make preview-deployment
