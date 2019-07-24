@@ -1,10 +1,4 @@
-> **Note**: this software is still incomplete. Areas still to be finished are marked as diff-styled text.
-
-```diff
-- this represents parts of the README file which have not yet been completed in the codebase.
-```
-
-# module_resources
+# python-module-resources
 
 Import non-python files in a project directory as python namedtuple objects.
 
