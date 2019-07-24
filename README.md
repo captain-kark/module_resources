@@ -200,10 +200,11 @@ Note that if you open a pull request from a fork, this step won't run.
 To publish a new official version, tag a commit and push it up to the master branch.
 
 ```
+git checkout master
+git pull origin master
 # examples of preparing a new tag for release
-make tag-patch
-make tag-minor
-make tag-major
+make tag-patch # also accepts: tag-minor, tag-major
+git push origin --tags
 ```
 
 Note that you must create and push tags from the master branch only. Tags found in pull requests won't do anything.
