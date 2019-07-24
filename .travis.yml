@@ -7,17 +7,15 @@ install:
 jobs:
   include:
     - stage: test
-      script: make tests
       if: type = pull_request
+      script: make tests
     - stage: publish-preview
       name: publish to test.pypi.org
-      script: make preview-deployment
       if: type = pull_request
-branches:
-  only: master
-deploy:
-  - provider: pypi
-    user: captain-kark
-    password: "$pypi_password"
-    on:
-      tags: true
+      script: make preview-deployment
+    - stage: publish
+      if: type = push AND tag IS present
+      deploy:
+        - provider: pypi
+          user: captain-kark
+          password: "$pypi_password"
