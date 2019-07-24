@@ -13,10 +13,11 @@ jobs:
       name: publish to test.pypi.org
       script: make preview-deployment
       if: pull_request IS true
+branches:
+  only: master
 deploy:
   - provider: pypi
     user: captain-kark
     password: "$pypi_password"
     on:
       tags: true
-      branch: master
