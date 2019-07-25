@@ -31,4 +31,4 @@ if __name__ == '__main__':
         action = getattr(semver, f'bump_{args.bump_level}')
         latest_version = action(latest_tag)
 
-    print(latest_version)
+    print(f'v{latest_version}')
