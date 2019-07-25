@@ -1,24 +1,34 @@
 #!/usr/bin/env python
 
+import argparse
 import subprocess  # nosec
-import sys
+
+import semver
 
 if __name__ == '__main__':
-    bump_level = None
-    if len(sys.argv) > 1:
-        bump_level = sys.argv[1]
+    parser = argparse.ArgumentParser(
+        description=(
+            """Bump the version of the latest release tag by a supported version level """
+            """modifier and print the tag value to stdout."""
+        )
+    )
+
+    bump_levels = ['major', 'minor', 'patch', 'prerelease']
+    parser.add_argument(
+        'bump_level',
+        help="level to bump the tag from by one",
+        choices=bump_levels,
+        type=str
+    )
+
+    args = parser.parse_args()
+
     latest_tag = subprocess.check_output( # nosec
         ['/usr/bin/env', 'git', 'tag', '--sort=-creatordate']
-    ).decode().split('\n')[0]
+    ).decode().split('\n')[0].replace('v', '')
 
-    major, minor, patch = map(int, latest_tag.replace('v', '').split('.'))
-    new_tag = {
-        'major': major,
-        'minor': minor,
-        'patch': patch
-    }
+    if args.bump_level:
+        action = getattr(semver, f'bump_{args.bump_level}')
+        latest_version = action(latest_tag)
 
-    if bump_level:
-        new_tag[bump_level] += 1
-
-    print(f"v{'.'.join(map(str, new_tag.values()))}")
+    print(latest_version)
