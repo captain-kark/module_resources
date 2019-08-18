@@ -13,7 +13,8 @@ function checkInstall {
     checkmark "$1 installed"
 }
 
+checkInstall git
 checkInstall python3.7
 checkInstall pip
 checkInstall virtualenv
-checkInstall git
+checkInstall pyenv
