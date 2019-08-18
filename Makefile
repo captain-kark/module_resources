@@ -33,6 +33,12 @@ deployment:
 virtualenv:
 	virtualenv --python=python3.7 .venv
 	. .venv/bin/activate && pip install -r requirements-dev.txt && pip install -r requirements-publish.txt
+	$(MAKE) pyenv
+
+pyenv:
+	test $$PYENV_ROOT
+	ln -sf $$PWD/.venv $$PYENV_ROOT/versions/$${PWD##*/}
+	-rm -f .python-version && echo "$${PWD##*/}" > .python-version
 
 contributors:
 	git log --format='%ae' | uniq > CONTRIBUTORS.txt
